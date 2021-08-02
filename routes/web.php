@@ -14,8 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/request-form', [APIController::class, 'show_form'])->name('api.form');
+Route::get('/request/form', [APIController::class, 'show_form'])->name('api.form');
 Route::post('/request', [APIController::class, 'request'])->name('api.request');
+Route::post('/request/cep', [APIController::class, 'request_cep'])->name('api.request.cep');
 
 Route::get('/', function() {
     // return view('welcome');
