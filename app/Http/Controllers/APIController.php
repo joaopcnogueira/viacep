@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CEPRequest;
 use Illuminate\Http\Request;
 
 class APIController extends Controller
 {
-    public function request(Request $request)
+    public function request(CEPRequest $request)
     {
-        $cep = str_replace('-', '', $request->cep);
+        $cep = preg_replace('/[^0-9.]/', '', $request->cep);
         $url = "http://viacep.com.br/ws/{$cep}/json";
         $response = json_decode(file_get_contents($url));
         // dd($response);
